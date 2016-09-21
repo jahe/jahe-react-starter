@@ -1,0 +1,37 @@
+{
+  "name": "jahe-react-starter",
+  "version": "1.0.0",
+  "description": "React Starter Project",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jahe/jahe-react-starter.git"
+  },
+  "scripts": {
+    "start": "node devserver.js"
+  },
+  "author": "Jannik Hell",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^6.4.1",
+    "babel-core": "^6.4.0",
+    "babel-loader": "^6.2.1",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "css-loader": "^0.25.0",
+    "eslint": "^3.5.0",
+    "eslint-plugin-react": "^6.3.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "node-sass": "^3.4.2",
+    "postcss-loader": "^0.13.0",
+    "react-hot-loader": "^1.3.0",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.12.10",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2"
+  }
+}
