@@ -1,0 +1,3 @@
+{
+  "app.helloWorld.greeting": "Bienvenue, {name}! Une autre foir: {date}"
+}

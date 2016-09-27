@@ -1,0 +1,3 @@
+{
+  "app.helloWorld.greeting": "Hallo, {name}! Letzte Aktion: {date}"
+}

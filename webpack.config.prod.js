@@ -1,5 +1,8 @@
 const webpack = require('webpack');
 const common = require('./webpack.config.common');
+const path = require('path');
+const autoprefixer = require('autoprefixer');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const prodConfig = Object.assign({}, common, {
   entry:   [
@@ -9,11 +12,14 @@ const prodConfig = Object.assign({}, common, {
     loaders: [
       {
         test:    /\.jsx?/,
-        loaders: 'babel',
-        include: path.join(__dirname, 'src/client')
+        loader: 'babel',
+        exclude: /node_modules/
       }, {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('style-loader', '!css-loader?sourceMap&importLoaders=1!postcss-loader!sass-loader?sourceMap')
+      }, {
+        test: /\.json$/,
+        loader: 'json-loader'
       }
     ]
   },

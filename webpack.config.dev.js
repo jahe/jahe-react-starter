@@ -1,11 +1,10 @@
 const webpack = require('webpack');
 const common = require('./webpack.config.common');
 const autoprefixer = require('autoprefixer');
-const path = require('path');
 
 const devConfig = Object.assign({}, common, {
   entry:   [
-  	'webpack-dev-server/client?http://localhost:8080',
+    'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
     './src/client/main.js'
   ],
@@ -14,16 +13,18 @@ const devConfig = Object.assign({}, common, {
       {
         test:    /\.jsx?/,
         loaders: ['react-hot', 'babel'],
-        include: path.join(__dirname, 'src/client')
+        exclude: /node_modules/
       }, {
         test: /\.scss$/,
-        // loader: 'style-loader!css-loader?sourceMap&importLoaders=1!sass-loader?sourceMap'
         loader: 'style-loader!css-loader?sourceMap&importLoaders=1!postcss-loader!sass-loader?sourceMap'
+      }, {
+        test: /\.json$/,
+        loader: 'json-loader'
       }
     ]
   },
   postcss: function() {
-  	return [autoprefixer];
+    return [autoprefixer];
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

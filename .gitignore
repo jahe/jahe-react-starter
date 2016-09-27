@@ -5,6 +5,7 @@ mongodb-data/
 _generated/
 coverage/
 npm-debug.log
+webpack-stats.json
 
 # https://www.jetbrains.com/webstorm/help/managing-projects-under-version-control.html
 .idea/workspace.xml
