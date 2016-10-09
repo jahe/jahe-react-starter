@@ -1,13 +1,20 @@
 const webpack = require('webpack');
-const common = require('./webpack.config.common');
 const autoprefixer = require('autoprefixer');
+const path = require('path');
+const validate = require('webpack-validator')
 
-const devConfig = Object.assign({}, common, {
+const devConfig = {
+  devtool: 'source-map',
   entry:   [
-    'webpack-dev-server/client?http://localhost:8080',
+    'webpack-dev-server/client?http://localhost:3333',
     'webpack/hot/only-dev-server',
     './src/client/main.js'
   ],
+  output:  {
+    path:       path.join(__dirname, 'public/dist'),
+    filename:   'app.js',
+    publicPath: '/dist/'
+  },
   module:  {
     loaders: [
       {
@@ -28,8 +35,9 @@ const devConfig = Object.assign({}, common, {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ]
-});
+};
 
-module.exports = devConfig;
+module.exports = validate(devConfig);

@@ -2,54 +2,45 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {addLocaleData, IntlProvider} from 'react-intl';
+// Import Redux Store
+import store from './store/store';
+
+// Import React-Intl with supported languages
+import {addLocaleData} from 'react-intl';
 import de from 'react-intl/locale-data/de';
 import en from 'react-intl/locale-data/en';
 import fr from 'react-intl/locale-data/fr';
 
-// Import our Component
-import HelloWorld from './components/HelloWorld.js';
+// Globally register React-Intl languages
+addLocaleData([...de, ...en, ...fr]);
 
 // Import Styles
 import './stylesheets/main.scss';
 
-addLocaleData([...de, ...en, ...fr]);
+// Import Root Component
+import Root from './containers/Root';
 
-// const language = navigator.language;
-// const messages = require('./translations/locales/' + language + '.json');
-
-class Root extends React.Component {
-  constructor(props) {
-    super(props);
-    this.displayName = 'Root';
-    this.state = {
-      language: 'de'
-    };
-  }
-  render() {
-    const {language} = this.state;
-    const messages = require('./translations/locales/' + language + '.json');
-
-    return(
-      <IntlProvider locale={language} key={language} messages={messages}>
-        <div>
-          <HelloWorld/>
-          <select value={language} onChange={({target: {value}}) => this.setState({language: value})}>
-            <option value="de">Deutsch</option>
-            <option value="en">English</option>
-            <option value="fr">Francaise</option>
-          </select>
-        </div>
-      </IntlProvider>
-    );
-  }
+if (!global.Intl) {
+  require.ensure([
+    'intl',
+    'intl/locale-data/jsonp/de.js',
+    'intl/locale-data/jsonp/en.js',
+    'intl/locale-data/jsonp/fr.js'
+  ], function (require) {
+    require('intl');
+    require('intl/locale-data/jsonp/en.js');
+    require('intl/locale-data/jsonp/de.js');
+    require('intl/locale-data/jsonp/fr.js');
+    renderApp();
+  });
+} else {
+  renderApp();
 }
 
-export default Root;
-
-
 // Render application
-ReactDOM.render(
-  <Root />,
-  document.getElementById('mountPoint')
-);
+function renderApp() {
+  ReactDOM.render(
+    <Root store={store}/>,
+    document.getElementById('mountPoint')
+  );
+}
