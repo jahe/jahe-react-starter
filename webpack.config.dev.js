@@ -4,7 +4,7 @@ const path = require('path');
 const validate = require('webpack-validator')
 
 const devConfig = {
-  devtool: 'source-map',
+  devtool: 'eval',
   entry:   [
     'webpack-dev-server/client?http://localhost:3333',
     'webpack/hot/only-dev-server',
@@ -13,7 +13,8 @@ const devConfig = {
   output:  {
     path:       path.join(__dirname, 'public/dist'),
     filename:   'app.js',
-    publicPath: '/dist/'
+    publicPath: '/dist/',
+    pathinfo: true // Include comments with information about the modules.
   },
   module:  {
     loaders: [
