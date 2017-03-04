@@ -1,4 +1,4 @@
-# jahe-react-starter
+# Jahe React Starter
 A starter project for React, WebPack, SASS, autoprefixer, ESLint, React Storybook
 
 # Getting Started
