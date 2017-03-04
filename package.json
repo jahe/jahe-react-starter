@@ -13,7 +13,9 @@
     "build:prod:withstats": "npm run build:clean && cross-env NODE_ENV=production webpack --config webpack.config.prod.js --profile --json > webpack-stats.json",
     "test": "jest --coverage",
     "watch:test": "jest --watch",
-    "manage:translations": "babel-node ./translationRunner.js"
+    "manage:translations": "babel-node ./translationRunner.js",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "author": "Jannik Hell",
   "license": "MIT",
@@ -55,6 +57,10 @@
     "redux-thunk: redux middleware to use asynchronous actions"
   ],
   "devDependencies": {
+    "@kadira/react-storybook-addon-info": "^3.3.0",
+    "@kadira/storybook": "^2.21.0",
+    "@kadira/storybook-addon-knobs": "^1.7.1",
+    "@kadira/storybook-addons": "^1.6.1",
     "autoprefixer": "^6.4.1",
     "babel-cli": "^6.14.0",
     "babel-core": "^6.4.0",
