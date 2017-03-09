@@ -4,5 +4,6 @@
     "files.associations": {
         "*.js": "javascriptreact"
     },
-    "prettier.singleQuote": true
+    "prettier.singleQuote": true,
+    "editor.formatOnSave": true
 }
