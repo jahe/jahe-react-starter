@@ -19,9 +19,9 @@ module.exports = {
         test: /\.scss$/,
         loader: 'style-loader!css-loader?sourceMap&importLoaders=1!postcss-loader!sass-loader?sourceMap'
       }
-    ],
+    ]
   },
   postcss: function() {
     return [autoprefixer];
-  },
+  }
 };

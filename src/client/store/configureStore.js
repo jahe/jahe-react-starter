@@ -4,8 +4,8 @@ import thunk from 'redux-thunk';
 
 export default function configureStore(preloadedState) {
   return createStore(
-		reducer,
-		preloadedState,
+    reducer,
+    preloadedState,
     compose(
       applyMiddleware(thunk),
       /**
@@ -14,5 +14,5 @@ export default function configureStore(preloadedState) {
        */
       window.devToolsExtension ? window.devToolsExtension() : f => f
     )
-	);
+  );
 }

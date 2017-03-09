@@ -8,7 +8,7 @@ setAddon(infoAddon);
 
 addDecorator(withKnobs);
 
-addDecorator((story) => (
+addDecorator(story => (
   <div>
     <h1>jahe-react-starter</h1>
     {story()}
@@ -18,7 +18,7 @@ addDecorator((story) => (
 configure(
   () => {
     const req = require.context('../src', true, /.stories.js$/);
-    req.keys().forEach((filename) => req(filename));
+    req.keys().forEach(filename => req(filename));
   },
   module
 );

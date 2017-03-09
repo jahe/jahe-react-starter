@@ -10,14 +10,17 @@ const types = {
   disabled: 'disabled'
 };
 
-storiesOf('Components', module)
-  .addWithInfo(
-    'Button with Info',
-    `
+storiesOf('Components', module).addWithInfo(
+  'Button with Info',
+  `
     A component to display a Button.
     `,
-    () =>  (
-      <Button text={text('Name', 'Louie Anderson')} type={select('Type', types)} onClick={action('clicked')}/>
-    ),
-    { inline: true }
-  );
+  () => (
+    <Button
+      text={text('Name', 'Louie Anderson')}
+      type={select('Type', types)}
+      onClick={action('clicked')}
+    />
+  ),
+  { inline: true }
+);

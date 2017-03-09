@@ -1,0 +1,8 @@
+{
+    "vsicons.presets.angular": false,
+    "workbench.iconTheme": "vscode-icons",
+    "files.associations": {
+        "*.js": "javascriptreact"
+    },
+    "prettier.singleQuote": true
+}

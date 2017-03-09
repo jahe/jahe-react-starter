@@ -6,24 +6,27 @@ const validate = require('webpack-validator');
 
 const prodConfig = {
   devtool: 'source-map',
-  entry:   [
-    './src/client/main.js'
-  ],
-  output:  {
-    path:       path.join(__dirname, 'public/dist'),
-    filename:   'app.js',
+  entry: ['./src/client/main.js'],
+  output: {
+    path: path.join(__dirname, 'public/dist'),
+    filename: 'app.js',
     publicPath: '/dist/'
   },
-  module:  {
+  module: {
     loaders: [
       {
-        test:    /\.jsx?/,
+        test: /\.jsx?/,
         loader: 'babel',
         exclude: /node_modules/
-      }, {
+      },
+      {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style-loader', '!css-loader?sourceMap&importLoaders=1!postcss-loader!sass-loader?sourceMap')
-      }, {
+        loader: ExtractTextPlugin.extract(
+          'style-loader',
+          '!css-loader?sourceMap&importLoaders=1!postcss-loader!sass-loader?sourceMap'
+        )
+      },
+      {
         test: /\.json$/,
         loader: 'json-loader'
       }
