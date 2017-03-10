@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const path = require('path');
-const validate = require('webpack-validator');
 
 const devConfig = {
   devtool: 'eval',
@@ -17,15 +16,25 @@ const devConfig = {
     pathinfo: true // Include comments with information about the modules.
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?/,
-        loaders: ['react-hot', 'babel'],
+        use: ['react-hot-loader', 'babel-loader'],
         exclude: /node_modules/
       },
       {
         test: /\.scss$/,
-        loader: 'style-loader!css-loader?sourceMap&importLoaders=1!postcss-loader!sass-loader?sourceMap'
+        use: [
+          'style-loader',
+          'css-loader?sourceMap&importLoaders=1',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [require('autoprefixer')]
+            }
+          },
+          'sass-loader?sourceMap'
+        ]
       },
       {
         test: /\.json$/,
@@ -33,14 +42,11 @@ const devConfig = {
       }
     ]
   },
-  postcss: function() {
-    return [autoprefixer];
-  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ]
 };
 
-module.exports = validate(devConfig);
+module.exports = devConfig;

@@ -11,14 +11,14 @@ import de from 'react-intl/locale-data/de';
 import en from 'react-intl/locale-data/en';
 import fr from 'react-intl/locale-data/fr';
 
-// Globally register React-Intl languages
-addLocaleData([...de, ...en, ...fr]);
-
 // Import Styles
 import './stylesheets/main.scss';
 
 // Import Root Component
 import Root from './containers/Root';
+
+// Globally register React-Intl languages
+addLocaleData([...de, ...en, ...fr]);
 
 if (!global.Intl) {
   require.ensure(

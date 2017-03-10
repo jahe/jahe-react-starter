@@ -2,7 +2,6 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
-const validate = require('webpack-validator');
 
 const prodConfig = {
   devtool: 'source-map',
@@ -13,18 +12,26 @@ const prodConfig = {
     publicPath: '/dist/'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?/,
-        loader: 'babel',
+        use: 'babel-loader',
         exclude: /node_modules/
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract(
-          'style-loader',
-          '!css-loader?sourceMap&importLoaders=1!postcss-loader!sass-loader?sourceMap'
-        )
+        use: ExtractTextPlugin.extract({
+          use: [
+            'css-loader?sourceMap&importLoaders=1',
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: () => [require('autoprefixer')]
+              }
+            },
+            'sass-loader?sourceMap'
+          ]
+        })
       },
       {
         test: /\.json$/,
@@ -32,13 +39,10 @@ const prodConfig = {
       }
     ]
   },
-  postcss: function() {
-    return [autoprefixer];
-  },
   plugins: [
-    new webpack.NoErrorsPlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new ExtractTextPlugin('app.css', {
+    new webpack.NoEmitOnErrorsPlugin(),
+    new ExtractTextPlugin({
+      filename: 'app.css',
       allChunks: true
     }),
     new webpack.DefinePlugin({
@@ -47,12 +51,10 @@ const prodConfig = {
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        warnings: false
-      }
+      sourceMap: true
     }),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ]
 };
 
-module.exports = validate(prodConfig);
+module.exports = prodConfig;
