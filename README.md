@@ -1,5 +1,5 @@
 # Jahe React Starter
-A starter project for React, Redux, WebPack 2, SASS, i18n, autoprefixer, ESLint, React Storybook
+A starter project for React, Redux, Webpack 2, SASS, i18n, autoprefixer, ESLint, React Storybook
 
 # Getting Started
 1. Install yarn: https://yarnpkg.com/lang/en/docs/install
