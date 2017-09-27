@@ -1,6 +1,6 @@
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-const path = require('path');
+const webpack = require('webpack')
+const autoprefixer = require('autoprefixer')
+const path = require('path')
 
 const devConfig = {
   devtool: 'eval',
@@ -19,7 +19,7 @@ const devConfig = {
     rules: [
       {
         test: /\.jsx?/,
-        use: ['react-hot-loader', 'babel-loader'],
+        use: ['babel-loader'],
         exclude: /node_modules/
       },
       {
@@ -47,6 +47,6 @@ const devConfig = {
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ]
-};
+}
 
-module.exports = devConfig;
+module.exports = devConfig

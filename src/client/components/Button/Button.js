@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import './Button.scss';
@@ -7,9 +8,9 @@ const Button = ({ type = '', text, onClick }) => (
 );
 
 Button.propTypes = {
-  type: React.PropTypes.string,
-  text: React.PropTypes.string,
-  onClick: React.PropTypes.func
+  type: PropTypes.string,
+  text: PropTypes.string,
+  onClick: PropTypes.func
 };
 
 export default Button;
