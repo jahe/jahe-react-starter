@@ -9,10 +9,8 @@
   "scripts": {
     "start": "node devserver.js",
     "build:clean": "rimraf ./public/dist",
-    "build:prod":
-      "npm run build:clean && cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
-    "build:prod:withstats":
-      "npm run build:clean && cross-env NODE_ENV=production webpack --config webpack.config.prod.js --profile --json > webpack-stats.json",
+    "build:prod": "npm run build:clean && cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+    "build:prod:withstats": "npm run build:clean && cross-env NODE_ENV=production webpack --config webpack.config.prod.js --profile --json > webpack-stats.json",
     "test": "jest --coverage",
     "watch:test": "jest --watch",
     "manage:translations": "babel-node ./translationRunner.js",
@@ -22,10 +20,9 @@
   "author": "Jannik Hell",
   "license": "MIT",
   "devDependencies": {
-    "@kadira/react-storybook-addon-info": "^3.3.0",
-    "@kadira/storybook": "^2.21.0",
-    "@kadira/storybook-addon-knobs": "^1.7.1",
-    "@kadira/storybook-addons": "^1.6.1",
+    "@storybook/addon-info": "^3.2.11",
+    "@storybook/addon-knobs": "^3.2.10",
+    "@storybook/react": "^3.2.11",
     "autoprefixer": "^6.7.6",
     "babel-cli": "^6.23.0",
     "babel-core": "^6.23.1",
@@ -66,6 +63,8 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "collectCoverageFrom": ["src/client/**/*.js"]
+    "collectCoverageFrom": [
+      "src/client/**/*.js"
+    ]
   }
 }
