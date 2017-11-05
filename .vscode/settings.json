@@ -6,5 +6,8 @@
   },
   "prettier.singleQuote": true,
   "prettier.semi": false,
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": true
 }
