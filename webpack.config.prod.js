@@ -1,7 +1,7 @@
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const path = require('path');
+const webpack = require('webpack')
+const autoprefixer = require('autoprefixer')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const path = require('path')
 
 const prodConfig = {
   devtool: 'source-map',
@@ -55,6 +55,6 @@ const prodConfig = {
     }),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ]
-};
+}
 
-module.exports = prodConfig;
+module.exports = prodConfig
